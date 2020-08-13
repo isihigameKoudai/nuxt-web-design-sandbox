@@ -23,7 +23,7 @@ const NuxtConfig: NuxtConfiguration = {
     timing: false,
   },
   // https://ja.nuxtjs.org/api/pages-transition#%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88
-  transition: {
+  pageTransition: {
     name: 'page',
     mode: 'out-in',
   },
