@@ -78,6 +78,7 @@ const NuxtConfig: NuxtConfiguration = {
    ** Nuxt.js modules
    */
   modules: [],
+  extensions: ['ts', 'tsx', 'js', 'jsx', 'vue'],
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
