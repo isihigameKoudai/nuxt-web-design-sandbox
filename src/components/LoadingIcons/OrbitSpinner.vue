@@ -1,51 +1,72 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
+  <div class="orbit-spinner">
+    <div class="orbit"></div>
+    <div class="orbit"></div>
+    <div class="orbit"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
+.orbit-spinner {
+  height: 55px;
+  width: 55px;
+  border-radius: 50%;
+  perspective: 800px;
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
+  .orbit {
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
+    &:nth-child(1) {
+      left: 0%;
+      top: 0%;
+      animation: orbit-spinner-orbit-one-animation 1200ms linear infinite;
+      border-bottom: 3px solid #ff1d5e;
     }
 
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
+    &:nth-child(2) {
+      right: 0%;
+      top: 0%;
+      animation: orbit-spinner-orbit-two-animation 1200ms linear infinite;
+      border-right: 3px solid #ff1d5e;
     }
 
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
+    &:nth-child(3) {
+      right: 0%;
+      bottom: 0%;
+      animation: orbit-spinner-orbit-three-animation 1200ms linear infinite;
+      border-top: 3px solid #ff1d5e;
     }
   }
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
+@keyframes orbit-spinner-orbit-one-animation {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
   }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
 
-  50% {
-    transform: scaleY(2);
+@keyframes orbit-spinner-orbit-two-animation {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes orbit-spinner-orbit-three-animation {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
   }
 }
 </style>

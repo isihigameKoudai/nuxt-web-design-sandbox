@@ -1,51 +1,25 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
+  <div class="ring-box">
+    <div class="ring"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
-
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
-
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
-    }
-
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
-    }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
-    }
-  }
+.ring-box {
+  perspective: 120px;
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
-  }
+.ring {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 4px solid #3cefff;
+  animation: spin 1.5s ease-in-out infinite;
+}
 
-  50% {
-    transform: scaleY(2);
+@keyframes spin {
+  to {
+    transform: rotateY(540deg);
   }
 }
 </style>

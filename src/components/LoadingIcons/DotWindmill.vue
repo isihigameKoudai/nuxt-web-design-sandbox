@@ -1,51 +1,53 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-  </div>
+  <div class="dot-windmill"></div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
+.dot-windmill {
+  position: relative;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3cefff;
+  color: #3cefff;
+  transform-origin: 5px 15px;
+  animation: dotWindmill 2s infinite linear;
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+  }
+
+  &::before {
+    left: -8.66px;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
     background-color: #3cefff;
+    color: #3cefff;
+  }
 
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
-    }
-
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
-    }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
-    }
+  &::after {
+    left: 8.66px;
+    top: 15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background-color: #3cefff;
+    color: #3cefff;
   }
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
+@keyframes dotWindmill {
+  0% {
+    transform: rotateZ(0deg) translate3d(0, 0, 0);
   }
-
-  50% {
-    transform: scaleY(2);
+  100% {
+    transform: rotateZ(720deg) translate3d(0, 0, 0);
   }
 }
 </style>

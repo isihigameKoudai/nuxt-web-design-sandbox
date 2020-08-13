@@ -1,51 +1,30 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-  </div>
+  <svg class="planet" viewBox="0 0 50 50">
+    <circle class="planet-ring" cx="25" cy="25" r="20"></circle>
+    <circle class="planet-ball" cx="25" cy="5" r="3.5"></circle>
+  </svg>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
+.planet {
+  width: 60px;
+  animation: 1.5s planet-spin ease infinite;
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
+  .planet-ring {
+    fill: none;
+    stroke: hsla(341, 97%, 59%, 0.3);
+    stroke-width: 2;
+  }
 
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
-    }
-
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
-    }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
-    }
+  .planet-ball {
+    fill: #fc2f70;
+    stroke: none;
   }
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
-  }
-
-  50% {
-    transform: scaleY(2);
+@keyframes planet-spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 </style>

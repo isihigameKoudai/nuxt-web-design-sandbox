@@ -1,51 +1,104 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
+  <div class="pacman">
+    <div class="child mouse"></div>
+    <div class="child mouse"></div>
+    <div class="child food"></div>
+    <div class="child food"></div>
+    <div class="child food"></div>
+    <!-- <div class="child food"></div> -->
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
+.pacman {
+  position: relative;
+  .child {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    transform: translate(0, 6.25px);
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
-
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
+    &.mouse:first-of-type {
+      width: 0;
+      height: 0;
+      border-right: 25px solid transparent;
+      border-top: 25px solid #3cefff;
+      border-left: 25px solid #3cefff;
+      border-bottom: 25px solid #3cefff;
+      border-radius: 25px;
+      animation: packman_half_up 0.5s 0s infinite;
+      position: relative;
+      left: -50px;
     }
 
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
+    &.mouse:nth-child(2) {
+      width: 0;
+      height: 0;
+      border-right: 25px solid transparent;
+      border-top: 25px solid #3cefff;
+      border-left: 25px solid #3cefff;
+      border-bottom: 25px solid #3cefff;
+      border-radius: 25px;
+      animation: packman_half_down 0.5s 0s infinite;
+      margin-top: -50px;
+      position: relative;
+      left: -50px;
     }
 
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
+    &.food {
+      width: 10px;
+      height: 10px;
+      position: absolute;
+      transform: translate(0, -7px);
+      top: 25px;
+      left: 70px;
+      background: #3cefff;
 
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
+      &:nth-child(3) {
+        animation: foods 1s 0s infinite linear;
+      }
+
+      &:nth-child(4) {
+        animation: foods 1s 1.33s infinite linear;
+      }
+
+      &:nth-child(5) {
+        animation: foods 1s 1.66s infinite linear;
+      }
     }
   }
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
+@keyframes packman_half_up {
+  0% {
+    transform: rotate(270deg);
   }
-
   50% {
-    transform: scaleY(2);
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes packman_half_down {
+  0% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(90deg);
+  }
+}
+
+@keyframes foods {
+  75% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-100px, -6.25px);
   }
 }
 </style>

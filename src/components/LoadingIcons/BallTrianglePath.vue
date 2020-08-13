@@ -1,51 +1,73 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
+  <div class="ball-triangle-path">
+    <div class="child"></div>
+    <div class="child"></div>
+    <div class="child"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
+.ball-triangle-path {
+  position: relative;
+  -webkit-transform: translate(-29.99px, -37.51px);
+  transform: translate(-29.99px, -37.51px);
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
+  .child {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    border: 1px solid #3cefff;
 
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
+    &:nth-child(1) {
+      top: 50px;
+      animation: ball-triangle-path-1 2s 0s ease-in-out infinite;
     }
-
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
+    &:nth-child(2) {
+      left: 25px;
+      animation: ball-triangle-path-2 2s 0s ease-in-out infinite;
     }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
+    &:nth-child(3) {
+      top: 50px;
+      left: 50px;
+      animation: ball-triangle-path-3 2s 0s ease-in-out infinite;
     }
   }
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
+@keyframes ball-triangle-path-1 {
+  33% {
+    transform: translate(25px, -50px);
   }
+  66% {
+    transform: translate(50px, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
 
-  50% {
-    transform: scaleY(2);
+@keyframes ball-triangle-path-2 {
+  33% {
+    transform: translate(25px, 50px);
+  }
+  66% {
+    transform: translate(-25px, 50px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes ball-triangle-path-3 {
+  33% {
+    transform: translate(-50px, 0);
+  }
+  66% {
+    transform: translate(-25px, -50px);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }
 </style>

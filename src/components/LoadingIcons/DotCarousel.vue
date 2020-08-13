@@ -1,51 +1,32 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-  </div>
+  <div class="dot-carousel"></div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
-
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
-
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
-    }
-
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
-    }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
-    }
-  }
+.dot-carousel {
+  position: relative;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #3cefff;
+  color: #3cefff;
+  box-shadow: 9984px 0 0 0 #3cefff, 9999px 0 0 0 #3cefff, 10014px 0 0 0 #3cefff;
+  animation: dotCarousel 1.5s infinite linear;
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
+@keyframes dotCarousel {
+  0% {
+    box-shadow: 9984px 0 0 -1px #3cefff, 9999px 0 0 1px #3cefff,
+      10014px 0 0 -1px #3cefff;
   }
-
   50% {
-    transform: scaleY(2);
+    box-shadow: 10014px 0 0 -1px #3cefff, 9984px 0 0 -1px #3cefff,
+      9999px 0 0 1px #3cefff;
+  }
+  100% {
+    box-shadow: 9999px 0 0 1px #3cefff, 10014px 0 0 -1px #3cefff,
+      9984px 0 0 -1px #3cefff;
   }
 }
 </style>

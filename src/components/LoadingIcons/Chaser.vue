@@ -1,51 +1,97 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
+  <div class="chaser">
+    <div class="chaser-dot"></div>
+    <div class="chaser-dot"></div>
+    <div class="chaser-dot"></div>
+    <div class="chaser-dot"></div>
+    <div class="chaser-dot"></div>
+    <div class="chaser-dot"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
+.chaser {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  animation: chase 2.5s infinite linear both;
+}
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
+.chaser-dot {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  animation: chase-dots 2s infinite ease-in-out both;
+  &::before {
+    content: '';
+    display: block;
+    width: 25%;
+    height: 25%;
     background-color: #3cefff;
+    border-radius: 100%;
+    animation: chaser-dot-before 2s infinite ease-in-out both;
+  }
 
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
+  &:nth-child(1) {
+    animation-delay: -1.1s;
+    &::before {
+      animation-delay: -1.1s;
     }
-
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
+  }
+  &:nth-child(2) {
+    animation-delay: -1s;
+    &::before {
+      animation-delay: -1s;
     }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
+  }
+  &:nth-child(3) {
+    animation-delay: -0.9s;
+    &::before {
+      animation-delay: -0.9s;
     }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
+  }
+  &:nth-child(4) {
+    animation-delay: -0.8s;
+    &::before {
+      animation-delay: -0.8s;
+    }
+  }
+  &:nth-child(5) {
+    animation-delay: -0.7s;
+    &::before {
+      animation-delay: -0.7s;
+    }
+  }
+  &:nth-child(6) {
+    animation-delay: -0.6s;
+    &::before {
+      animation-delay: -0.6s;
     }
   }
 }
 
-@keyframes wave-grow {
-  0%,
+@keyframes chase {
   100% {
-    transform: scaleY(1);
+    transform: rotate(360deg);
   }
+}
 
+@keyframes chase-dots {
+  80%,
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes chaser-dot-before {
   50% {
-    transform: scaleY(2);
+    transform: scale(0.4);
+  }
+  100%,
+  0% {
+    transform: scale(1);
   }
 }
 </style>

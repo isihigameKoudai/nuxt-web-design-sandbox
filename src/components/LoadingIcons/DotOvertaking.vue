@@ -1,51 +1,51 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-  </div>
+  <div class="dot-overtaking"></div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
+.dot-overtaking {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: transparent;
+  color: #3cefff;
+  margin: -1px 0;
+  box-shadow: 0 -20px 0 0;
+  animation: dotOvertaking 2s infinite cubic-bezier(0.2, 0.6, 0.8, 0.2);
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
+  &::before,
+  &::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    background-color: transparent;
+    color: #3cefff;
+    box-shadow: #3cefff -20px 0 0;
+  }
 
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
-    }
+  &::before {
+    animation: dotOvertaking 2s infinite cubic-bezier(0.2, 0.6, 0.8, 0.2);
+    animation-delay: 0.3s;
+  }
 
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
-    }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
-    }
+  &::after {
+    animation: dotOvertaking 1.5s infinite cubic-bezier(0.2, 0.6, 0.8, 0.2);
+    animation-delay: 0.6s;
   }
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
+@keyframes dotOvertaking {
+  0% {
+    transform: rotateZ(0deg);
   }
-
-  50% {
-    transform: scaleY(2);
+  100% {
+    transform: rotateZ(360deg);
   }
 }
 </style>

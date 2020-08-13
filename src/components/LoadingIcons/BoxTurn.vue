@@ -1,51 +1,44 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-  </div>
+  <div class="box-turn"></div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
+.box-turn {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: 3px solid #3cefff;
+  overflow: hidden;
+  animation: spin 3s ease infinite;
+}
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
+.box-turn::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 33px;
+  height: 33px;
+  background-color: hsla(185, 100%, 62%, 0.75);
+  transform-origin: center bottom;
+  transform: scaleY(1);
+  animation: fill 3s linear infinite;
+}
 
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
-    }
-
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
-    }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
-    }
+@keyframes spin {
+  50%,
+  100% {
+    transform: rotate(360deg);
   }
 }
 
-@keyframes wave-grow {
-  0%,
+@keyframes fill {
+  25%,
+  50% {
+    transform: scaleY(0);
+  }
   100% {
     transform: scaleY(1);
-  }
-
-  50% {
-    transform: scaleY(2);
   }
 }
 </style>

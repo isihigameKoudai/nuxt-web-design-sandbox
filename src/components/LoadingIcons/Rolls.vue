@@ -1,51 +1,26 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-  </div>
+  <div class="rolls"></div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
-
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
-
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
-    }
-
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
-    }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
-    }
-  }
+.rolls {
+  width: 48px;
+  height: 48px;
+  border: 3px solid transparent;
+  border-top-color: #fc2f70;
+  border-bottom-color: #fc2f70;
+  border-radius: 50%;
+  animation: spin-stretch 2s ease infinite;
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
-  }
-
+@keyframes spin-stretch {
   50% {
-    transform: scaleY(2);
+    transform: rotate(360deg) scale(0.4, 0.33);
+    border-width: 8px;
+  }
+  100% {
+    transform: rotate(720deg) scale(1, 1);
+    border-width: 3px;
   }
 }
 </style>

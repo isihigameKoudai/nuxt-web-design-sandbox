@@ -1,7 +1,7 @@
 <template>
   <div class="microintaraction-page">
     <article class="wrap">
-      <section>
+      <section class="list">
         <LoadingContainer>
           <WaveBar />
         </LoadingContainer>
@@ -159,6 +159,13 @@ export default defineComponent({
     height: auto;
     margin: 0 auto;
     padding: 50px 0;
+  }
+
+  .list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
   }
 }
 

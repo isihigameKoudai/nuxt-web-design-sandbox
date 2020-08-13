@@ -1,51 +1,93 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
+  <div class="cube-grid">
+    <div class="cube-grid__cube cube1"></div>
+    <div class="cube-grid__cube cube2"></div>
+    <div class="cube-grid__cube cube3"></div>
+    <div class="cube-grid__cube cube4"></div>
+    <div class="cube-grid__cube cube5"></div>
+    <div class="cube-grid__cube cube6"></div>
+    <div class="cube-grid__cube cube7"></div>
+    <div class="cube-grid__cube cube8"></div>
+    <div class="cube-grid__cube cube9"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
-  display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  justify-content: space-between;
-  width: 32px;
+.cube-grid {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+}
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
+.cube-grid__cube {
+  width: 33%;
+  height: 33%;
+  background-color: #3cefff;
+  float: left;
+  -webkit-animation: cube-grid-scale-delay 1.3s infinite ease-in-out;
+  animation: cube-grid-scale-delay 1.3s infinite ease-in-out;
+}
 
-    &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
-    }
+.cube-grid__cube.cube1 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.cube-grid__cube.cube2 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.cube-grid__cube.cube3 {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.cube-grid__cube.cube4 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.cube-grid__cube.cube5 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.cube-grid__cube.cube6 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.cube-grid__cube.cube7 {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+.cube-grid__cube.cube8 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.cube-grid__cube.cube9 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
 
-    &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
-    }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
-    }
+@-webkit-keyframes cube-grid-scale-delay {
+  0%,
+  70%,
+  100% {
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+  35% {
+    -webkit-transform: scale3d(0, 0, 1);
+    transform: scale3d(0, 0, 1);
   }
 }
 
-@keyframes wave-grow {
+@keyframes cube-grid-scale-delay {
   0%,
+  70%,
   100% {
-    transform: scaleY(1);
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
   }
-
-  50% {
-    transform: scaleY(2);
+  35% {
+    -webkit-transform: scale3d(0, 0, 1);
+    transform: scale3d(0, 0, 1);
   }
 }
 </style>

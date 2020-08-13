@@ -1,51 +1,42 @@
 <template>
-  <div class="wave-bar">
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
-    <span class="wave-bar-child"></span>
+  <div class="dots">
+    <div class="dots-child"></div>
+    <div class="dots-child"></div>
+    <div class="dots-child"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-.wave-bar {
+.dots {
+  width: 56px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
-  width: 32px;
 
-  .wave-bar-child {
-    width: 5px;
-    height: 16px;
-    background-color: #3cefff;
+  .dots-child {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: #fc2f70;
+    animation: fade 0.8s ease-in-out alternate infinite;
 
     &:nth-of-type(1) {
-      animation: wave-grow 1s -0.45s ease-in-out infinite;
+      animation-delay: -0.4s;
     }
 
     &:nth-of-type(2) {
-      animation: wave-grow 1s -0.3s ease-in-out infinite;
-    }
-
-    &:nth-of-type(3) {
-      animation: wave-grow 1s -0.15s ease-in-out infinite;
-    }
-
-    &:nth-of-type(4) {
-      animation: wave-grow 1s ease-in-out infinite;
+      animation-delay: -0.2s;
     }
   }
 }
 
-@keyframes wave-grow {
-  0%,
-  100% {
-    transform: scaleY(1);
+@keyframes fade {
+  from {
+    opacity: 1;
   }
-
-  50% {
-    transform: scaleY(2);
+  to {
+    opacity: 0;
   }
 }
 </style>
